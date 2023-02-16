@@ -20,11 +20,10 @@ class ApiController extends Controller
             $temp=false;
         }
 
-
         $data=array();
         if($temp){
-            foreach($temp as $item){
-                array_push($data,['title'=>$item->title,'start'=>$item->date,'end'=>$item->date,'allDay'=>1,'resource'=>$link]);
+            foreach($temp as $key=>$item){
+                array_push($data,['title'=>$item->title,'start'=>$item->date,'end'=>$item->date,'allDay'=>1,'resource'=>$item->file->title,'color'=>$item->file->color,'text'=>$item->file->text]);
             }
         }
         return response()->json(['result'=>$result,'data'=>$data]);

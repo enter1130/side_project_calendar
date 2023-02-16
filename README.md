@@ -38,3 +38,6 @@ http://localhost:8000
 ### v1.0.0
 - 日曆功能
 - 串接side_project_reminder的api
+
+### v1.1.0
+- 新增不同顏色的提醒事項功能
