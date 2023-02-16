@@ -24,24 +24,6 @@ copy .env.example .env
 php artisan key:generate
 ```
 
-設置上傳文件保存位置：
-```
-php artisan storage:link
-```
-
-設置.env資料庫參數：
-```
-DB_CONNECTION=mysql
-DB_HOST=目標資料庫的ip
-DB_PORT=3306
-DB_DATABASE=esg_rank
-DB_USERNAME=admin
-DB_PASSWORD=admin
-```
-```
-php artisan migrate --seed
-```
-
 ## 啟動命令
 執行系統
 ```
