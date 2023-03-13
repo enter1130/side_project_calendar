@@ -1,9 +1,9 @@
-import moment from 'moment';
+import globalize from 'globalize';
 import React, { useCallback } from 'react';
-import { Calendar, momentLocalizer } from 'react-big-calendar';
+import { Calendar, globalizeLocalizer } from 'react-big-calendar';
 import useSWR from 'swr';
 function Home() {
-    const localizer = momentLocalizer(moment) // or globalizeLocalizer
+    const localizer = globalizeLocalizer(globalize) // or globalizeLocalizer
     
     const fetcher = url => fetch(url).then(res => res.json());
     const link='api/memo';
@@ -23,9 +23,10 @@ function Home() {
         <div style={{height:'800px'}}>
             <Calendar
                 eventPropGetter={eventPropGetter}
+                showMultiDayTimes
                 localizer={localizer}
-                startAccessor="start"
-                endAccessor="end"
+                startAccessor={(event) => { return new Date(event.start) }}
+                endAccessor={(event) => { return new Date(event.end) }}
                 events={data.data}
             />
         </div>

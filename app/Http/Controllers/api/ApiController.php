@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use DateTime;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Request;
@@ -22,8 +23,8 @@ class ApiController extends Controller
 
         $data=array();
         if($temp){
-            foreach($temp as $key=>$item){
-                array_push($data,['title'=>$item->title,'start'=>$item->date,'end'=>$item->date,'allDay'=>1,'resource'=>$item->file->title,'color'=>$item->file->color,'text'=>$item->file->text]);
+            foreach($temp as $item){
+                array_push($data,['title'=>$item->title,'start'=>$item->date_start,'end'=>$item->date_end,'allDay'=>false,'resource'=>$item->file->title,'color'=>$item->file->color,'text'=>$item->file->text]);
             }
         }
         return response()->json(['result'=>$result,'data'=>$data]);
